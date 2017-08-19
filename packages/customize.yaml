@@ -1,0 +1,47 @@
+homeassistant:
+  customize:
+    #Climate
+    binary_sensor.hallway_thermostat_fan:
+      hidden: true
+    binary_sensor.hallway_thermostat_has_leaf:
+      hidden: true
+    binary_sensor.hallway_thermostat_is_locked:
+      hidden: true
+    binary_sensor.hallway_thermostat_is_using_emergency_heat:
+      hidden: true
+    binary_sensor.hallway_thermostat_online:
+      hidden: true
+    binary_sensor.living_room_thermostat_fan:
+      hidden: true
+    binary_sensor.living_room_thermostat_has_leaf:
+      hidden: true
+    binary_sensor.living_room_thermostat_is_locked:
+      hidden: true
+    binary_sensor.living_room_thermostat_is_using_emergency_heat:
+      hidden: true
+    binary_sensor.living_room_thermostat_online:
+      hidden: true
+    binary_sensor.upstairs_camera_motion_detected:
+      hidden: true
+    binary_sensor.upstairs_camera_online:
+      hidden: true
+    binary_sensor.upstairs_camera_person_detected:
+      hidden: true
+    binary_sensor.upstairs_camera_sound_detected:
+      hidden: true
+    sensor.hallway_thermostat_humidity:
+      hidden: true
+    sensor.living_room_thermostat_humidity:
+      hidden: true
+    sensor.hallway_thermostat_hvac_state:
+      hidden: true
+    sensor.living_room_thermostat_operation_mode:
+      hidden: true
+    sensor.hallway_thermostat_operation_mode:
+      hidden: true
+    sensor.hallway_thermostat_target:
+      hidden: true
+    sensor.living_room_thermostat_hvac_state:
+      hidden: true
+    sensor.living_room_thermostat_target:
+      hidden: true
