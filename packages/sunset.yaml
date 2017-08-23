@@ -1,0 +1,53 @@
+#####################################################
+## Packages / Sunset
+#####################################################
+
+#####################################################
+## Customize
+#####################################################
+
+homeassistant:
+  customize:
+    packages.sunset: &customize
+      homebridge_hidden: false
+      package: 'sunrise'
+
+    automation.sunset:
+      <<: *customize
+      friendly_name: "Sunset"
+      icon: mdi:weather-sunset
+
+######################################################
+## Automation
+######################################################
+
+automation:
+  - alias: sunset
+    initial_state: 'on'
+    condition:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: group.all_lights
+          state: 'off'
+        - condition: time
+          after: "18:00:00"
+          before: "21:00:00"
+    trigger:
+      - platform: sun
+        event: sunset
+        offset: '-00:30:00'
+    action:
+      - service: light.turn_on
+        entity_id:
+          - group.master_bedroom
+          - group.living_room
+          - group.office
+          - group.kitchen
+        data:
+          transition: 300
+          brightness: 144
+          rgb_color: [243, 179, 80]
+      - service: notify.notify
+        data:
+          message: "Lights have been turned on due to sunset"
