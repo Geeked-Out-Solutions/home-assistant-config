@@ -1,0 +1,114 @@
+################################################################
+## Group / Rooms
+################################################################
+
+master_bedroom:
+  name: Master Bedroom
+  control: hidden
+  entities:
+    - light.brian
+    - light.sheena
+    - media_player.chromecast8579
+    - media_player.chromecastaudiobedroom
+    - switch.bedroom_tv
+
+
+family_locations:
+  name: Family Locations
+  control: hidden
+  entities:
+
+
+presence:
+    control: hidden
+    name: Presence
+    entities:
+      - input_boolean.away
+
+travel_times:
+  name: Travel Times
+  control: hidden
+  entities:
+
+
+kitchen:
+  name: Kitchen
+  control: hidden
+  entities:
+    - light.sink
+
+living_room:
+  control: hidden
+  name: Living Room
+  entities:
+    - light.hue_color_lamp_1
+    - light.hue_color_lamp_2
+    - light.hue_color_lamp_3
+    - media_player.sony_bravia_tv
+    - media_player.kodi
+    - binary_sensor.living_room_thermostat_online
+    - binary_sensor.living_room_thermostat_fan
+    - binary_sensor.living_room_thermostat_has_leaf
+    - climate.living_room
+    - sensor.living_room_thermostat_target
+    - sensor.living_room_thermostat_temperature
+    - sensor.living_room_thermostat_humidity
+    - sensor.living_room_thermostat_hvac_state
+    - sensor.living_room_thermostat_operation_mode
+
+loft:
+  name: Loft
+  control: hidden
+  entities:
+    - light.loft1
+    - light.loft2
+    - media_player.chromecastloft
+    - switch.loft_tv
+
+hallway:
+  name: Hallway
+  entities:
+    - binary_sensor.hallway_thermostat_online
+    - binary_sensor.hallway_thermostat_fan
+    - binary_sensor.hallway_thermostat_has_leaf
+    - climate.hallway
+    - sensor.hallway_thermostat_target
+    - sensor.hallway_thermostat_temperature
+    - sensor.hallway_thermostat_humidity
+    - sensor.hallway_thermostat_hvac_state
+    - sensor.hallway_thermostat_operation_mode
+
+office:
+  name: Office
+  control: hidden
+  entities:
+    - light.office1
+    - light.office2
+    - light.bloom_office
+    - light.computer_strip
+
+garage:
+  name: Garage
+  control: hidden
+  entities:
+    - light.garage_left
+    - light.garage_right
+#    - cover.garage_door
+#    - sensor.garage_door_status
+#    - sensor.garage_door_time_in_state
+#    - sensor.garage_door_wifi_signal_strength
+#    - sensor.garage_door_reflection_rate
+
+
+front_door:
+    name: Front Door
+    entities:
+      - sensor.ring_front_door_battery
+      - sensor.ring_front_door_volume
+      - binary_sensor.ring_front_door_ding
+      - binary_sensor.ring_front_door_motion
+
+back_door:
+  name: Back Door
+  entities:
+    - light.back_door

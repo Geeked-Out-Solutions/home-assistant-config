@@ -58,8 +58,20 @@ sensor:
 tts:
   - platform: google
 
-group: !include groups.yaml
-automation: !include automations.yaml
+media_player:
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_secret
+
+alarm_control_panel:
+  platform: alarmdotcom
+  username: !secret alarm_username
+  password: !secret alarm_password
+
+
+automation: !include_dir_merge_list automation
+group: !include_dir_merge_named group
+
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret

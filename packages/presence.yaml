@@ -1,0 +1,6 @@
+###### MODES / PEOPLE
+input_boolean:
+  away:
+    name: Away
+    icon: mdi:account-off
+    initial: off 

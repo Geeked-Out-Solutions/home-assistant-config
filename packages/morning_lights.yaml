@@ -1,0 +1,65 @@
+#####################################################
+## Packages / Morning Lights
+#####################################################
+
+#####################################################
+## Customize
+#####################################################
+
+homeassistant:
+  customize:
+    packages.morning_lights: &customize
+      homebridge_hidden: false
+      package: 'morning_lights'
+
+    automation.morning_lights:
+      <<: *customize
+      friendly_name: "Morning Lights"
+      icon: mdi:lightbulb-on-outline
+
+#####################################################
+## Group
+#####################################################
+
+group:
+  morning_lights:
+    control: hidden
+    entities:
+      - light.brian
+      - light.sheena
+      - light.hue_color_lamp_1
+      - light.hue_color_lamp_2
+      - light.hue_color_lamp_3
+      - light.shower
+      - light.sink
+      - light.loft1
+      - light.loft2
+
+######################################################
+## Automation
+######################################################
+
+automation:
+  - alias: morning_lights
+    initial_state: 'on'
+    condition:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.vacation
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.away
+          state: 'off'
+    trigger:
+      - platform: time
+        at: "06:00:00"
+    action:
+      - service: light.turn_on
+        entity_id:
+          - group.morning_lights
+        data:
+          transition: 300
+          brightness: 60
+          color_temp: 443
+      - service: alarm_control_panel.alarm_disarm 
