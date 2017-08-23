@@ -1,0 +1,134 @@
+################################################################
+## Packages / Views
+################################################################
+
+################################################################
+## Customize
+################################################################
+
+homeassistant:
+  customize:
+    packages.views: &customize
+      homebridge_hidden: true
+      package: 'views'
+
+    group.automation:
+      <<: *customize
+      friendly_name: "All Automations"
+
+    group.home:
+      <<: *customize
+      friendly_name: "My Home"
+      icon: mdi:home
+
+    group.family:
+      <<: *customize
+      friendly_name: "Family"
+
+    group.lights:
+      <<: *customize
+      friendly_name: "Light Panel"
+
+    group.home_security:
+      <<: *customize
+      friendly_name: "Home Security"
+
+    group.living_room:
+      <<: *customize
+      friendly_name: "Living Room"
+
+    group.loft:
+      <<: *customize
+      friendly_name: "Loft"
+
+    group.outside:
+      <<: *customize
+      friendly_name: "Outside"
+
+    group.downstairs:
+      <<: *customize
+      friendly_name: "Downstairs"
+
+    group.upstairs:
+      <<: *customize
+      friendly_name: "Upstairs"
+
+    group.weather:
+      <<: *customize
+      friendly_name: "Weather"
+      icon: mdi:weather-partlycloudy
+
+
+################################################
+## Group
+################################################
+
+group:
+  home:
+    view: yes
+    entities:
+      - group.living_room
+      - group.hallway
+      - group.front_door
+
+
+  automations:
+    view: yes
+    entities:
+      - group.all_automations
+
+  family:
+    view: yes
+    entities:
+      - input_boolean.away
+
+  lights:
+    view: yes
+    entities:
+      - group.all_lights
+
+  home_security:
+    view: yes
+    entities:
+      - alarm_control_panel.alarmcom
+      - group.front_door
+
+
+
+  loft_view:
+    view: yes
+    entities:
+      - group.loft
+
+  outside:
+    view: yes
+    entities:
+      - group.garage
+      - group.front_door
+      - group.back_door
+
+  dowstairs:
+    view: yes
+    entities:
+      - group.living_room
+      - group.kitchen
+      - group.garage
+      - group.front_door
+      - group.back_door
+
+  upstairs:
+    view: yes
+    entities:
+      - group.loft
+      - group.office
+      - group.hallway
+      - group.master_bedroom
+      - group.master_bathroom
+
+  weather:
+    view: yes
+    entities:
+      - group.weather_general
+      - group.weather_darksky
+      - group.weather_wunderground
+      - group.weather_yr

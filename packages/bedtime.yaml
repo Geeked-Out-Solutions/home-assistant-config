@@ -1,0 +1,90 @@
+#####################################################
+## Packages / Bedtime
+#####################################################
+
+#####################################################
+## Customize
+#####################################################
+
+homeassistant:
+  customize:
+    packages.bedtime: &customize
+      homebridge_hidden: false
+      package: 'bedtime'
+
+    automation.bedtime:
+      <<: *customize
+      friendly_name: "Bedtime"
+      icon: mdi:hotel
+
+    script.bedtime:
+      friendly_name: Bedtime
+      icon: mdi:hotel
+
+######################################################
+## Script
+######################################################
+
+script:
+  bedtime:
+    sequence:
+##### BEDROOM
+    - service: light.turn_off
+      entity_id: light.brian
+    - service: light.turn_off
+      entity_id: light.sheena
+    - service: light.hue_activate_scene
+      data:
+        group_name: "Master Bath"
+        scene_name: "Nightlight"
+###### LIVINGROOM/KITCHEN
+    - service: light.turn_off
+      entity_id: group.living_room
+    - service: light.turn_off
+      entity_id: light.sink
+    - service: alarm_control_panel.alarm_arm_home
+###### BACKYARD
+    - service: light.turn_off
+      entity_id: light.back_door
+###### OFFICE
+    - service: light.turn_off
+      entity_id: group.office
+
+######################################################
+## Automation
+######################################################
+
+automation:
+  - alias: 'Bedtime Weekday'
+    condition:
+    - condition: and
+      conditions:
+        - condition: time
+          weekday:
+            - mon
+            - tue
+            - wed
+            - thu
+            - sun
+    trigger:
+      - platform: time
+        at: "22:00:00"
+    action:
+      - service: script.turn_on
+        entity_id: script.bedtime
+
+
+  - alias: 'Bedtime Weekend'
+    condition:
+    - condition: and
+      conditions:
+        - condition: time
+          weekday:
+            - fri
+            - sat
+    trigger:
+      - platform: time
+        at: "23:00:00"
+    action:
+      - service: script.turn_on
+        entity_id: script.bedtime 

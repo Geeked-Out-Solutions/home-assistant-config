@@ -63,7 +63,6 @@ media_player:
     client_id: !secret spotify_client_id
     client_secret: !secret spotify_client_secret
 
-<<<<<<< HEAD
 alarm_control_panel:
   platform: alarmdotcom
   username: !secret alarm_username
@@ -73,11 +72,6 @@ alarm_control_panel:
 automation: !include_dir_merge_list automation
 group: !include_dir_merge_named group
 
-=======
-
-group: !include groups.yaml
-automation: !include automations.yaml
->>>>>>> a62e7e93e91a37183b99a8cf3e9c6f16e07e9e7d
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret

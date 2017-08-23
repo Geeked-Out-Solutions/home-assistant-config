@@ -1,5 +1,11 @@
 homeassistant:
   customize:
+    #automations
+    group.all_automations:
+      friendly_name: 'All Automations'
+      hidden: False
+
+
     #Climate
     binary_sensor.hallway_thermostat_fan:
       hidden: true
