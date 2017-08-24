@@ -63,6 +63,11 @@ media_player:
     client_id: !secret spotify_client_id
     client_secret: !secret spotify_client_secret
 
+light:
+  - platform: hue
+    allow_unreachable: true
+    allow_hue_groups: false
+
 alarm_control_panel:
   platform: alarmdotcom
   username: !secret alarm_username
