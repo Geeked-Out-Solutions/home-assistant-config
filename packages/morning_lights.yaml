@@ -46,9 +46,6 @@ automation:
     - condition: and
       conditions:
         - condition: state
-          entity_id: input_boolean.vacation
-          state: 'off'
-        - condition: state
           entity_id: input_boolean.away
           state: 'off'
     trigger:
@@ -62,4 +59,4 @@ automation:
           transition: 300
           brightness: 60
           color_temp: 443
-      - service: alarm_control_panel.alarm_disarm 
+      - service: alarm_control_panel.alarm_disarm
