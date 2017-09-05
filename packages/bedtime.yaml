@@ -29,7 +29,7 @@ homeassistant:
 script:
   bedtime:
     sequence:
-##### BEDROOM
+    ##### BEDROOM
     - service: light.turn_off
       entity_id: light.brian
     - service: light.turn_off
@@ -38,16 +38,16 @@ script:
       data:
         group_name: "Master Bath"
         scene_name: "Nightlight"
-###### LIVINGROOM/KITCHEN
+    ###### LIVINGROOM/KITCHEN
     - service: light.turn_off
       entity_id: group.living_room
     - service: light.turn_off
       entity_id: light.sink
     - service: alarm_control_panel.alarm_arm_home
-###### BACKYARD
+    ###### BACKYARD
     - service: light.turn_off
       entity_id: light.back_door
-###### OFFICE
+    ###### OFFICE
     - service: light.turn_off
       entity_id: group.office
 
