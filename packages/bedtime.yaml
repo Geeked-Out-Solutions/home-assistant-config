@@ -88,4 +88,4 @@ automation:
         at: "23:00:00"
     action:
       - service: script.turn_on
-        entity_id: script.bedtime 
+        entity_id: script.bedtime
