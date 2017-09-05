@@ -94,7 +94,6 @@ group:
       - group.front_door
 
 
-
   loft_view:
     view: yes
     entities:
