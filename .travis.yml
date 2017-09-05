@@ -6,4 +6,4 @@ before_script:
 - pip install yamllint
 
 script:
-- yamllint *.yml group/ packages/
+- yamllint *.yaml group/ packages/
