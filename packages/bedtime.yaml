@@ -58,7 +58,7 @@ script:
 automation:
   - alias: 'Bedtime Weekday'
     condition:
-    - condition: and
+      condition: and
       conditions:
         - condition: time
           weekday:
@@ -77,7 +77,7 @@ automation:
 
   - alias: 'Bedtime Weekend'
     condition:
-    - condition: and
+      condition: and
       conditions:
         - condition: time
           weekday:
