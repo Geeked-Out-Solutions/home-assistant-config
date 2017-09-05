@@ -25,7 +25,7 @@ automation:
   - alias: sunset
     initial_state: 'on'
     condition:
-      - condition: and
+      condition: and
       conditions:
         - condition: state
           entity_id: group.all_lights
