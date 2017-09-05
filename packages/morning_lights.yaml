@@ -43,7 +43,7 @@ automation:
   - alias: morning_lights
     initial_state: 'on'
     condition:
-    - condition: and
+      condition: and
       conditions:
         - condition: state
           entity_id: input_boolean.away
