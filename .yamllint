@@ -1,5 +1,0 @@
-extends: default
-
-rules:
-  comments-indentation: disable  # don't bother me with this rule
-  document-start: disable
