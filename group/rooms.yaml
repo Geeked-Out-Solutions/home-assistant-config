@@ -1,3 +1,4 @@
+---
 ################################################################
 ## Group / Rooms
 ################################################################
@@ -20,10 +21,10 @@ family_locations:
 
 
 presence:
-    control: hidden
-    name: Presence
-    entities:
-      - input_boolean.away
+  control: hidden
+  name: Presence
+  entities:
+    - input_boolean.away
 
 travel_times:
   name: Travel Times
@@ -101,12 +102,12 @@ garage:
 
 
 front_door:
-    name: Front Door
-    entities:
-      - sensor.ring_front_door_battery
-      - sensor.ring_front_door_volume
-      - binary_sensor.ring_front_door_ding
-      - binary_sensor.ring_front_door_motion
+  name: Front Door
+  entities:
+    - sensor.ring_front_door_battery
+    - sensor.ring_front_door_volume
+    - binary_sensor.ring_front_door_ding
+    - binary_sensor.ring_front_door_motion
 
 back_door:
   name: Back Door
