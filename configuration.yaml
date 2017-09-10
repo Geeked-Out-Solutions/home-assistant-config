@@ -19,10 +19,13 @@ frontend:
 # Enables configuration UI
 config:
 
+mycroft:
+  host: 10.0.0.7
+
 http:
   api_password: !secret api_password
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
+  ssl_certificate: !secret ssl_cert
+  ssl_key: !secret ssl_key
   base_url: !secret base_url
 
 device_tracker:
