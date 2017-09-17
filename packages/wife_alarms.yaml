@@ -6,7 +6,7 @@ automation:
   - alias: 'Medicine Reminder'
     condition:
     - condition: state
-      entity_id: device_tracker.sheenas_iphone
+      entity_id: device_tracker.sheenasiphone
       state: 'home'
     trigger:
       - platform: time
