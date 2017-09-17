@@ -35,7 +35,7 @@ device_tracker:
     username: !secret unifi_user
     password: !secret unifi_pw
     verify_ssl: False
-
+  - platform: bluetooth_tracker
 # Checks for available updates
 # Note: This component will send some information about your system to
 # the developers to assist with development of Home Assistant.
@@ -81,9 +81,12 @@ alarm_control_panel:
   username: !secret alarm_username
   password: !secret alarm_password
 
-
+################################################
+## Component Includes (Merge List)
+################################################
 automation: !include_dir_merge_list automation
 group: !include_dir_merge_named group
+zone: !include_dir_merge_list zone
 
 nest:
   client_id: !secret nest_client_id

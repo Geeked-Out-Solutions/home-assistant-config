@@ -1,0 +1,10 @@
+################################################################
+## Zone
+################################################################
+
+
+- name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  radius: 100
+  icon: mdi:home-outline

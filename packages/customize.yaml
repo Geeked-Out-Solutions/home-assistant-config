@@ -51,3 +51,8 @@ homeassistant:
       hidden: true
     sensor.living_room_thermostat_target:
       hidden: true
+
+    #Lights
+    group.all_lights:
+      friendly_name: 'All Lights'
+      hidden: False

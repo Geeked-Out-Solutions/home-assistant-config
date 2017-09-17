@@ -1,0 +1,50 @@
+#####################################################
+## Packages / Sunrise
+#####################################################
+
+#####################################################
+## Customize
+#####################################################
+
+homeassistant:
+  customize:
+    packages.sunrise: &customize
+      homebridge_hidden: false
+      package: 'sunrise'
+
+    automation.sunrise:
+      <<: *customize
+      friendly_name: "Sunrise"
+      icon: mdi:weather-sunset-up
+
+######################################################
+## Automation
+######################################################
+
+
+automation:
+  - alias: sunrise
+    initial_state: 'on'
+    condition:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: group.all_lights
+          state: 'on'
+        - condition: time
+          after: "7:00:00"
+          before: "8:00:00"
+        - condition: state
+          entity_id: group.family_locations
+          state: 'not_home'
+    trigger:
+      - platform: state
+        entity_id: sun.sun
+        to: above_horizon
+    action:
+      - service: light.turn_off
+        entity_id: group.all_lights
+      - service: notify.notify
+        data:
+          message: "Lights have been turned off due to sunrise"
+          title: "Sunrise trigger fired"
