@@ -1,0 +1,14 @@
+##############################################################
+## Packages / Medicine Reminders
+##############################################################
+
+automation:
+  - alias: 'Medicine Reminder'
+    trigger:
+      - platform: time
+        at: '7:00:00'
+    action:
+      - service: notify.notify
+        data:
+          message: "Don't forget to take your medicine guys."
+          title: "Medicine Reminder"
