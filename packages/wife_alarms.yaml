@@ -12,7 +12,7 @@ automation:
       - platform: time
         at: '6:30:00'
     action:
-      - service: script.voice_notify_all
-        data_template:
-          value1: Don't forget Sheena to take your pill, no babies please.
-          value2: ""
+      - service: notify.notify
+        data:
+          message: "Don't forget Sheena to take your pill, no babies please."
+          title: "Medicine Reminder"

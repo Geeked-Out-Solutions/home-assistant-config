@@ -1,0 +1,25 @@
+################################################################
+## Group / Peeps
+################################################################
+
+################################################
+## House
+################################################
+house:
+  name: My House
+  view: yes
+  entities:
+    - group.peeps_wifey
+    - group.peeps_bdub
+
+
+peeps_wifey:
+  name: Sheena
+  entities:
+    - device_tracker.sheenasiphone
+
+peeps_bdub:
+  name: Brian
+  entities:
+    - device_tracker.brians_phone
+    - device_tracker.briansphone
