@@ -26,17 +26,17 @@ automation:
   - alias: sunrise
     initial_state: 'on'
     condition:
-    - condition: and
-      conditions:
-        - condition: state
-          entity_id: group.all_lights
-          state: 'on'
-        - condition: time
-          after: "7:00:00"
-          before: "8:00:00"
-        - condition: state
-          entity_id: group.family_locations
-          state: 'not_home'
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: group.all_lights
+            state: 'on'
+          - condition: time
+            after: "7:00:00"
+            before: "8:00:00"
+          - condition: state
+            entity_id: group.family_locations
+            state: 'not_home'
     trigger:
       - platform: state
         entity_id: sun.sun

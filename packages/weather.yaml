@@ -189,8 +189,10 @@ sensor:
         value_template: >-
           {% set temp_entity = 'sensor.pws_temp_f' %}
           {% set temp = states(temp_entity)|float(none) %}
-          {% set temp_min = states.input_slider.season_winter.state|default(68)|float %}
-          {% set temp_max = states.input_slider.season_summer.state|default(84)|float %}
+          {% set temp_min = states.input_slider.season_winter
+          .state|default(68)|float %}
+          {% set temp_max = states.input_slider.season_summer
+          .state|default(84)|float %}
           {% if temp is none %}
             {{ states(temp_entity) }}
           {% elif temp < temp_min %}
