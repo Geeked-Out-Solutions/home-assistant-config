@@ -6,7 +6,7 @@ automation:
   - alias: 'Medicine Reminder'
     trigger:
       - platform: time
-        at: '7:00:00'
+        at: '19:00:00'
     action:
       - service: notify.notify
         data:
