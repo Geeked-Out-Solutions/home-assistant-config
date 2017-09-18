@@ -22,4 +22,3 @@ peeps_bdub:
   name: Brian
   entities:
     - device_tracker.brians_phone
-    - device_tracker.briansphone

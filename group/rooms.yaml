@@ -18,6 +18,8 @@ family_locations:
   name: Family Locations
   control: hidden
   entities:
+    - device_tracker.sheenasiphone
+    - device_tracker.brians_phone
 
 
 presence:
@@ -25,6 +27,9 @@ presence:
   name: Presence
   entities:
     - input_boolean.away
+    - input_boolean.vacation
+    - input_boolean.brian
+    - input_boolean.sheena
 
 travel_times:
   name: Travel Times

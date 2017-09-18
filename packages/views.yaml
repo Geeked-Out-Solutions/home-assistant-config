@@ -81,6 +81,7 @@ group:
     view: yes
     entities:
       - input_boolean.away
+      - group.family_locations
 
   lights:
     view: yes
@@ -92,6 +93,9 @@ group:
     entities:
       - alarm_control_panel.alarmcom
       - group.front_door
+      - automation.arm_away
+      - automation.arm_stay
+      - sensor.ring_front_door_volume
 
 
   loft_view:

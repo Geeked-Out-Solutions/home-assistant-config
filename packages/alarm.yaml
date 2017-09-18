@@ -1,0 +1,87 @@
+################################################################
+## Packages / AlarmDotCom
+################################################################
+
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    packages.alarmdotcom: &customize
+      homebridge_hidden: true
+      package: 'alarmdotcom'
+
+    alarm_control_panel.alarmcom:
+      <<: *customize
+      friendly_name: "Alarm System"
+
+    group.alarm_system:
+      <<: *customize
+      friendly_name: "Alarm System"
+
+    automation.armed_away:
+      <<: *customize
+      friendly_name: "Arm Away"
+      icon: mdi:security-home
+
+    automation.disarm_family_home:
+      <<: *customize
+      friendly_name: "Disarm Family Home"
+      icon: mdi:security-home
+
+################################################
+## Group
+################################################
+
+group:
+  alarm_system:
+    control: hidden
+    entities:
+      - alarm_control_panel.alarmcom
+
+################################################
+## Automation
+################################################
+
+automation:
+  - alias: arm_away
+    initial_state: 'on'
+    condition:
+    - condition: state
+      entity_id: input_boolean.away
+      state: 'on'
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.alarmcom
+          state: 'disarmed'
+    trigger:
+      - platform: state
+        entity_id: input_boolean.away
+        from: 'off'
+        to: 'on'
+    action:
+      - service: alarm_control_panel.alarm_arm_away
+
+  - alias: disarm_family_home
+    initial_state: 'on'
+    condition:
+    - condition: state
+      entity_id: input_boolean.away
+      state: 'off'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.alarmcom
+          state: "armed_home"
+        - condition: state
+          entity_id: alarm_control_panel.alarmcom
+          state: "armed_away"
+    trigger:
+      - platform: state
+        entity_id: input_boolean.away
+        from: 'on'
+        to: 'off'
+    action:
+      - service: alarm_control_panel.alarm_disarm

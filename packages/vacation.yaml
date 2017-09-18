@@ -1,0 +1,54 @@
+#####################################################
+## Packages / Vacation
+#####################################################
+
+automation:
+################# Vacation Mode On
+  - alias: 'Set Vaction Mode on'
+    initial_state: 'on'
+    condition:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.vacation
+          state: 'off'
+    trigger:
+      - platform: state
+        entity_id: input_boolean.vacation
+        to: 'on'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.vacation
+      - service: light.turn_off
+        entity_id: group.all_lights
+      - service: climate.set_operation_mode
+        data:
+          entity_id: climate.hallway, climate.living_room
+          operation_mode: 'eco'
+      - service: notify.notify
+        data:
+          message: "System has been set to vacation mode, vacation automations activated."
+
+################# Vacation Mode Off
+  - alias: 'Set Vacation Mode off'
+    initial_state: 'on'
+    condition:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.vacation
+          state: 'on'
+    trigger:
+      - platform: state
+        entity_id: group.family_locations
+        to: 'home'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.vacation
+      - service: climate.set_operation_mode
+        data:
+          entity_id: climate.hallway, climate.living_room
+          operation_mode: 'auto'
+      - service: notify.notify
+        data:
+          message: "Vacation mode has been deactivated."

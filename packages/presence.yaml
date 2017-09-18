@@ -1,5 +1,79 @@
+############################################
+# Packages / Presence Detection
+############################################
+homeassistant:
+  customize:
+    device_tracker.sheenasiphone:
+      friendly_name: 'Sheena'
+      hidden: False
+
+    device_tracker.brians_phone:
+      friendly_name: 'Brian'
+      hidden: False
+
+
+automation:
+################# Away
+  - alias: 'Set Away Mode on'
+    initial_state: 'on'
+    condition:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.away
+          state: 'off'
+        - condition: state
+          entity_id: group.family_locations
+          state: 'not_home'
+    trigger:
+      - platform: state
+        entity_id: group.family_locations
+        to: 'not_home'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.away
+      - service: light.turn_off
+        entity_id: group.all_lights
+      - service: climate.set_operation_mode
+        data:
+          entity_id: climate.hallway, climate.living_room
+          operation_mode: 'eco'
+      - service: notify.notify
+        data:
+          message: "System has been set to away mode, system has been armed."
+################# HOME
+  - alias: 'Set Away Mode off'
+    initial_state: 'on'
+    condition:
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.away
+          state: 'on'
+        - condition: state
+          entity_id: group.family_locations
+          state: 'home'
+    trigger:
+      - platform: state
+        entity_id: group.family_locations
+        to: 'home'
+    action:
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.away
+      - service: climate.set_operation_mode
+        data:
+          entity_id: climate.hallway, climate.living_room
+          operation_mode: 'auto'
+      - service: notify.notify
+        data:
+          message: "Alarm has been disarmed, welcome home."
+
 ###### MODES / PEOPLE
 input_boolean:
+  vacation:
+    name: Vacation
+    icon: mdi:sunglasses
+    initial: off
   away:
     name: Away
     icon: mdi:account-off
