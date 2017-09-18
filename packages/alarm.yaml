@@ -48,14 +48,14 @@ automation:
   - alias: arm_away
     initial_state: 'on'
     condition:
-    - condition: state
-      entity_id: input_boolean.away
-      state: 'on'
-    - condition: and
-      conditions:
-        - condition: state
-          entity_id: alarm_control_panel.alarmcom
-          state: 'disarmed'
+      - condition: state
+        entity_id: input_boolean.away
+        state: 'on'
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: alarm_control_panel.alarmcom
+            state: 'disarmed'
     trigger:
       - platform: state
         entity_id: input_boolean.away
@@ -67,17 +67,17 @@ automation:
   - alias: disarm_family_home
     initial_state: 'on'
     condition:
-    - condition: state
-      entity_id: input_boolean.away
-      state: 'off'
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: alarm_control_panel.alarmcom
-          state: "armed_home"
-        - condition: state
-          entity_id: alarm_control_panel.alarmcom
-          state: "armed_away"
+      - condition: state
+        entity_id: input_boolean.away
+        state: 'off'
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: alarm_control_panel.alarmcom
+            state: "armed_home"
+          - condition: state
+            entity_id: alarm_control_panel.alarmcom
+            state: "armed_away"
     trigger:
       - platform: state
         entity_id: input_boolean.away
