@@ -56,3 +56,11 @@ homeassistant:
     group.all_lights:
       friendly_name: 'All Lights'
       hidden: False
+
+    #Zones
+    zone.sheena_work:
+      friendly_name: 'Sheena Work'
+      track_ios: true
+
+    zone.home:
+      track_ios: true

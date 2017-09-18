@@ -43,6 +43,8 @@ device_tracker:
 # https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
 updater:
 
+ios:
+
 # Discover some devices automatically
 discovery:
 
