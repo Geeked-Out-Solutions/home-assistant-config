@@ -17,14 +17,14 @@ automation:
   - alias: 'Set Away Mode on'
     initial_state: 'on'
     condition:
-    - condition: and
-      conditions:
-        - condition: state
-          entity_id: input_boolean.away
-          state: 'off'
-        - condition: state
-          entity_id: group.family_locations
-          state: 'not_home'
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: input_boolean.away
+            state: 'off'
+          - condition: state
+            entity_id: group.family_locations
+            state: 'not_home'
     trigger:
       - platform: state
         entity_id: group.family_locations
@@ -45,14 +45,14 @@ automation:
   - alias: 'Set Away Mode off'
     initial_state: 'on'
     condition:
-    - condition: and
-      conditions:
-        - condition: state
-          entity_id: input_boolean.away
-          state: 'on'
-        - condition: state
-          entity_id: group.family_locations
-          state: 'home'
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: input_boolean.away
+            state: 'on'
+          - condition: state
+            entity_id: group.family_locations
+            state: 'home'
     trigger:
       - platform: state
         entity_id: group.family_locations
