@@ -3,7 +3,7 @@
 ############################################
 homeassistant:
   customize:
-    device_tracker.sheenasiphone:
+    device_tracker.sheenas_iphone:
       friendly_name: 'Sheena'
       hidden: False
 
